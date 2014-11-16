@@ -1,0 +1,47 @@
+<h1>Welcome, {{user.restaurant}} </h1>
+<form ng-submit="saveParty()" class="form-inline party-form" role="form">
+  <div class="form-group">
+    <div class="input-group">
+      <label class="sr-only" for="partyName">Party Name</label>
+      <input ng-model="newParty.name" type="text" class="form-control" id="partyName" placeholder="Name">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="sr-only" for="phoneNumber">Phone</label>
+    <input ng-model="newParty.phone" type="text" class="form-control" id="phoneNumber" placeholder="Phone">
+  </div>
+  <div class="form-group">
+    <label class="sr-only" for="sizeOfParty">Phone</label>
+    <input ng-model="newParty.size" type="text" class="form-control" id="sizeofParty" placeholder="Party Size">
+  </div>
+  <button type="submit" class="btn btn-primary">Add Party</button>
+</form>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Seated?</th>
+            <th>Info</th>
+            <th>Notified?</th>
+            <th>Actions</th>
+            <!--<th>Time Waited</th>-->
+        </tr>
+    </thead>
+    <tr ng-repeat="party in parties | orderByPriority">
+        <td><input type="checkbox" ng-model="party.done" ng-change="parties.$save(party.$id)"></td>
+        <td>
+            <div><strong>{{ party.name }} ({{ party.size }} people)</strong></div>
+            <div>{{ party.phone }}</div>
+            <div> {{ party.dateCreated | date: 'MM/dd/yyyy @ HH:mm:ss'}}</div>
+        </td>
+        <td>
+            <div><strong>{{ party.notified }}</strong></div>
+        </td>
+        <td>
+            <button ng-click="sendText(party)" type="submit" class="btn btn-success">Send SMS</button>
+            <button ng-click="parties.$remove(party.$id)" type="submit" class="btn btn-danger">Remove</button>
+        </td>
+        <!--<td>-->
+            <!--&lt;!&ndash;<div>{{ party.timeWaited }}</div>&ndash;&gt;-->
+        <!--</td>-->
+    </tr>
+</table>
