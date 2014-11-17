@@ -47,7 +47,7 @@ angular.module('myApp.services', [])
 
         var authServiceUser = {
             register: function(user) { // controller passes user
-                auth.$createUser(user.email, user.password, user.restaurant).then(function(data) {
+                auth.$createUser(user.email, user.password).then(function(data) {
                     console.log(data);
                     authServiceUser.login(user, function() {
                         emails.$add({email: user.email});

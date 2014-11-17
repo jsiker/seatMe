@@ -1,13 +1,10 @@
 'use strict';
 
-angular.module('myApp.controllers', [])
+angular.module('myApp.controllers', [/*"highcharts-ng"*/])
     .controller('LandingPageController', [function(){
 
     }])
     .controller('WaitListController', ['$scope', 'partyService', 'textService', 'authService', function($scope, partyService, textService, authService) {
-//        var partiesRef = new Firebase(FIREBASE_URL + '/parties');  // firebase reference; saves at parties level
-//
-//        $scope.parties = $firebase(partiesRef); // partiesRef is our data DB object
 
         // binds user's parties to the scope.parties
         authService.getCurrentUser().then(function(user) {
@@ -36,7 +33,7 @@ angular.module('myApp.controllers', [])
     .controller('AuthController', ['$scope', 'authService', function($scope, authService) {
 
         // object bound to inputs on register and login
-        $scope.user = {email: '', password: ''};
+        $scope.user = {email: '', password: '', restaurant: ''};
 
         $scope.register = function() {
             authService.register($scope.user); // below functions all come from authService
@@ -50,4 +47,22 @@ angular.module('myApp.controllers', [])
             authService.logout()
         };
 
+//    }])
+//    .controller('ChartController', ['$scope', function($scope) {
+//        $scope.chartConfig = {
+//            options: {
+//                chart: {
+//                    type: 'line',
+//                    zoomType: 'x'
+//                }
+//            },
+//            series: [{
+//                data: [10, 9, 5, 7, 8, 4, 3, 1, 8, 10]
+//            }],
+//            title: {
+//                text: 'Test'
+//            },
+//            xAxis: {currentMin: 0, currentMax: 10, minRange: 1},
+//            loading: false
+//        }
     }]);

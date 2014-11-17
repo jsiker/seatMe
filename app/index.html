@@ -3,6 +3,10 @@
 <head>
     <meta charset="utf-8">
     <title>SeatMe</title>
+
+    <!-- FAVICON -->
+    <link href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgoJBwoKCf8KCgkHAAAAAAAAAAAAAAAACgoJBwoKCf8KCgkHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKCgn/AAAAAAAAAAAAAAAAAAAAAAAAAAAKCgn/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgoJ/wAAAAAAAAAAAAAAAAAAAAAAAAAACgoJ/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoKCf8AAAAAAAAAAAAAAAAAAAAAAAAAAAoKCf8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoKCf8KCgn/CgoJ/woKCf8KCgn/CgoJ/woKCf8KCgn/CgoJ/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoKCf8KCgn/CgoJ/woKCf8KCgn/CgoJ/woKCf8KCgn/CgoJ/woKCf8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKCgn/CgoJ/wcj8v0HI/L9ByPy/Qcj8v0HI/L9ByPy/Qcj8v0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgoJ/woKCf8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoKCf8KCgn/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKCgn/CgoJ/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgoJ/woKCf8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoKCf8KCgn/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKCgn/CgoJ/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAPffAAD33wAA998AAPffAADgDwAAwA8AAMAfAADP/wAAz/8AAM//AADP/wAAz/8AAM//AAD//wAA//8AAA==" rel="icon" type="image/x-icon" />
+
     <!-- Google Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Just+Me+Again+Down+Here' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
@@ -19,6 +23,10 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
 
+    <!-- HIGHCHARTS -->
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/highcharts-more.js"></script>
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
@@ -31,15 +39,24 @@
         font-family: 'Just Me Again Down Here', cursive;
         /*font-family: 'Rock Salt', cursive;*/
     }
-    table, input, button, .navbar {
+    table, input, button, .navbar, p, h5 {
         font-family: 'Montserrat', sans-serif;
     }
-
+    input.ng-invalid.ng-dirty{
+        border: 1px solid red;
+    }
+    .strike {
+        text-decoration: line-through;
+        color: gray;
+    }
+    .table-striped>tbody>tr:nth-child(odd) {
+        background-color: rgba(255, 255, 255, 0.5);
+    }
 </style>
 </head>
 <body>
     <!-- NAVBAR for every page, changes based on route-->
-    <div ng-controller="AuthController" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div ng-controller="AuthController" class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -64,6 +81,7 @@
     <!-- Angular JS -->
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular/angular-route.js"></script>
+
 
     <!-- Firebase -->
     <script src="https://cdn.firebase.com/js/client/1.0.15/firebase.js"></script>
