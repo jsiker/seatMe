@@ -89,15 +89,16 @@
         </div>
       </div>
     </div>
-    <div align="left" id="cart"><h2>Your Cart</h2>
+    <div style="float:left" id="cart"><h2>Your Cart</h2>
         <table>
             <tr ng-repeat="f in food">
                 <td>{{f.name}}: {{f.price | currency}} x {{f.quantity}}</td>
             </tr>
         </table>
     </div>
-    <div align="center" style="width:200px;">
-        <h2>Total: {{ getTotal() | currency }}</h2>
+    <div style="width:200px;float:left">
+        <h2 style="text-decoration: underline">Total</h2>
+        <h2> {{ getTotal() | currency }}</h2>
         <br>
 		<form stripe-form="stripeCallback" name="form">
 			<input ng-model="number" placeholder="Card Number" payments-format="card"
@@ -106,8 +107,8 @@
 			       payments-validate="expiry" name="expiry" />
 			<input ng-model="cvc" placeholder="CVC" payments-format="cvc"
 			       payments-validate="cvc" name="cvc" />
-			<button style="margin-top: 5px" class="btn btn-primary" type="submit">Submit</button>
-            <div class="row"></div>
+			<button style="margin-top: 5px;margin-bottom: 15px" class="btn btn-primary" type="submit">Submit</button>
+            <br>
 		</form>
 
 		<div ng-if="form.card.$invalid">
@@ -121,4 +122,3 @@
 		</div>
     </div>
 </div>
-

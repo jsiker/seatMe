@@ -47,7 +47,7 @@ angular.module('myApp.controllers', ['angularPayments'])
     .config(function() {
     window.Stripe.setPublishableKey('pk_test_0ka22OyPdHUkD8DrphKsXUDy');
 	})
-    .controller('EatController', ['$scope', 'authService', 'partyService', 'foodService', 'Firebase', function($scope, authService, partyService, Firebase) {
+      .controller('EatController', ['$scope', 'authService', 'partyService', 'foodService', 'Firebase', function($scope, authService, partyService, Firebase) {
         authService.getCurrentUser().then(function(user) {
             if (user) {
                 $scope.user = user;
