@@ -17,9 +17,30 @@ body {
     border-radius: 0 !important;
     font-family: 'Montserrat', sans-serif !important;
 }
+div#mainchair {
+    background: url(http://127.0.0.1:8000/img/isolated-chair.png) center top transparent;
+    background-size: 38%;
+    background-repeat: no-repeat;
+    height: 710px;
+}
+div#mainchair p, div#mainchair h1 {
+    text-shadow: -.3px 0 , 0 1px floralwhite, 1px 0 floralwhite, 0 -.3px floralwhite;
+}
+div#mainchair a {
+    border-radius: 5% !important;
+}
+div#textContent {
+    clear: both;
 
-/*@font-face {*/
-/*font-family: 'Durant';*/
-/*src: url('/app/fonts/TOONEYNO.TTF')  format('truetype');*/
-/*font-weight: bold;*/
-/*}*/
+}
+input.ng-invalid.ng-dirty{
+    border: 1px solid red;
+}
+#cart {
+    width: 250px;
+}
+.strike {
+    text-decoration: line-through;
+    color: gray;
+    background-color: lightgray !important;
+}

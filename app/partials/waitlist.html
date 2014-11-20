@@ -1,4 +1,5 @@
-<h1>Welcome, {{user.email}} </h1>
+<h1>Welcome, Test's Bar & Kitchen</h1>
+<a style="position:relative;font-size: 3em" href="#/analytics">Analytics</a>
 <form ng-submit="saveParty()" class="form-inline party-form" role="form" name="waitForm">
   <div class="form-group">
     <div class="input-group">
@@ -16,10 +17,11 @@
            ng-minlength="10"
            ng-maxlength="10"
            format-phone
-            />
+            style="max-width: 195px"/>
+
   </div>
   <div class="form-group">
-    <label class="sr-only" for="sizeOfParty">Phone</label>
+    <label class="sr-only" for="sizeOfParty">Party Size</label>
     <input ng-model="newParty.size"
            type="number"
            class="form-control bfh-number"
@@ -27,7 +29,7 @@
            placeholder="Party Size"
            ng-minlength="1"
            ng-maxlength="2"
-            />
+            style="max-width: 195px"/>
   </div>
   <button type="submit" class="btn btn-primary" ng-disabled="waitForm.$invalid">Add Party</button>
 </form>
@@ -38,10 +40,9 @@
             <th>Info</th>
             <th>Notified?</th>
             <th>Actions</th>
-            <!--<th>Time Waited</th>-->
         </tr>
     </thead>
-    <tr ng-repeat="party in parties | orderByPriority">
+    <tr ng-repeat="party in parties | orderByPriority" class="waitlist">
         <td><input type="checkbox" ng-model="party.done" ng-change="parties.$save(party.$id)"></td>
         <td ng-class="{strike: party.done}">
             <div><strong>{{ party.name }} ({{ party.size }} people)</strong></div>
@@ -49,19 +50,11 @@
             <div> {{ party.dateCreated | date: 'MM/dd/yyyy @ h:mm:ss a'}}</div>
         </td>
         <td>
-            <div><strong>{{ party.notified }}</strong></div>
+            <div><strong>{{ party.notified | date: 'MM/dd/yyyy @ h:mm:ss a' }}</strong></div>
         </td>
         <td>
             <button ng-click="sendText(party)" type="submit" class="btn btn-success">Send SMS</button>
             <button ng-click="parties.$remove(party.$id)" type="submit" class="btn btn-danger">Remove</button>
         </td>
-        <!--<td>-->
-            <!--&lt;!&ndash;<div>{{ party.timeWaited }}</div>&ndash;&gt;-->
-        <!--</td>-->
     </tr>
 </table>
-<!--<div ng-controller="ChartController">-->
-<!--<div class="row">-->
-    <!--<highchart id="chart1" config="chartConfig" class="span10"></highchart>-->
-<!--</div>-->
-<!--</div>-->

@@ -1,0 +1,120 @@
+<div class="container">
+    <h1>Welcome to Test's Bar & Kitchen</h1>
+        <table class="table table-striped table-bordered" style="width: 30%; float:right;">
+        <thead>
+            <tr>
+                <th>Info</th>
+            </tr>
+        </thead>
+        <tr ng-repeat="party in parties | orderByPriority">
+            <td ng-class="{strike: party.done}">
+                <div><strong>{{ party.name }} ({{ party.size }} people)</strong></div>
+                <div> {{ party.dateCreated | date: 'MM/dd/yyyy @ h:mm:ss a'}}</div>
+            </td>
+        </tr>
+    </table>
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" style="width:65%">
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+            <a onclick="return false;" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <h4 class="panel-title">Soup</h4>
+            </a>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body" style="max-height:400px">
+            <img style="float:left" height=50% width=50% src="http://9ad4fbf943e652b35b9f-c4a49d76d48cd1b152556e6b92003f52.r98.cf2.rackcdn.com/i/food/dishes/large/tomato-basil-bisque-536.png">
+              <div style="float:left">Vine-ripened pear tomatoes pureed with fresh cream for a velvety smooth flavor accented by hints of red pepper and oregano and topped with our homemade asiago cheese croutons. Served daily.<br>
+                  <div class="form-group">
+                    <input ng-model="food.zero"
+                           type="number"
+                           class="form-control bfh-number"
+                           placeholder="Quantity"
+                           ng-minlength="1"
+                           ng-maxlength="2"
+                            />
+                  </div>
+      <button type="submit" class="btn btn-primary" ng-click="addToCart(food.quantity)">Add To Cart</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingTwo">
+
+            <a onclick="return false;" class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <h4 class="panel-title">Salad</h4>
+            </a>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body"style="max-height:400px">
+              <img style="float:left" height=50% width=50% src="http://9ad4fbf943e652b35b9f-c4a49d76d48cd1b152556e6b92003f52.r98.cf2.rackcdn.com/i/food/dishes/large/tomato-basil-bisque-536.png">
+              <div style="float:left">Vine-ripened pear tomatoes pureed with fresh cream for a velvety smooth flavor accented by hints of red pepper and oregano and topped with our homemade asiago cheese croutons. Served daily.<br>
+                <div class="form-group">
+                    <input ng-model="food.one"
+                           type="number"
+                           class="form-control bfh-number"
+                           placeholder="Quantity"
+                           ng-minlength="1"
+                           ng-maxlength="2"
+                            />
+              </div>
+      <button type="submit" class="btn btn-primary" ng-click="addToCart(food.quantity)">Add To Cart</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingThree">
+
+            <a onclick="return false;" class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                   <h4 class="panel-title"> Entrée</h4>
+            </a>
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body"style="max-height:400px">
+                <img style="float:left" height=50% width=50% src="http://9ad4fbf943e652b35b9f-c4a49d76d48cd1b152556e6b92003f52.r98.cf2.rackcdn.com/i/food/dishes/large/tomato-basil-bisque-536.png">
+                <div style="float:left">Vine-ripened pear tomatoes pureed with fresh cream for a velvety smooth flavor accented by hints of red pepper and oregano and topped with our homemade asiago cheese croutons. Served daily. <br>
+                <div class="form-group">
+                    <input ng-model="food.two"
+                           type="number"
+                           class="form-control bfh-number"
+                           placeholder="Quantity"
+                           ng-minlength="1"
+                           ng-maxlength="2"
+                            />
+                </div>
+            <button type="submit" class="btn btn-primary" ng-click="addToCart(food.quantity)">Add To Cart</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div align="left" id="cart"><h2>Your Cart</h2>
+        <table>
+            <tr ng-repeat="f in food">
+                <td>{{f.name}}: {{f.price | currency}} x {{f.quantity}}</td>
+            </tr>
+        </table>
+    </div>
+    <div align="center" style="width:200px;">
+        <h2>Total: {{ getTotal() | currency }}</h2>
+        <br>
+		<form stripe-form="stripeCallback" name="form">
+			<input ng-model="number" placeholder="Card Number" payments-format="card"
+			       payments-validate="card" name="card" />
+			<input ng-model="expiry" placeholder="Expiration" payments-format="expiry"
+			       payments-validate="expiry" name="expiry" />
+			<input ng-model="cvc" placeholder="CVC" payments-format="cvc"
+			       payments-validate="cvc" name="cvc" />
+			<button style="margin-top: 5px" class="btn btn-primary" type="submit">Submit</button>
+		</form>
+
+		<div ng-if="form.card.$invalid">
+			Error: invalid card number!
+		</div>
+		<div ng-if="form.expiry.$invalid">
+			Error: invalid expiration date!
+		</div>
+		<div ng-if="form.cvc.$invalid">
+			Error: invalid CVC!
+		</div>
+    </div>
+</div>
+
