@@ -71,7 +71,7 @@ angular.module('myApp.controllers', ['angularPayments'])
 
         ];
 
-        $scope.addToCart = function(food) {
+        $scope.addToCart = function() {
             $scope.food[0].quantity = $scope.food.zero;
             $scope.food[1].quantity = $scope.food.one;
             $scope.food[2].quantity = $scope.food.two;
@@ -92,9 +92,9 @@ angular.module('myApp.controllers', ['angularPayments'])
         // Stripe Response Handler
 		$scope.stripeCallback = function (code, result) {
 			if (result.error) {
-				window.alert('it failed! error: ' + result.error.message);
+				window.alert('Please enter a correct credit card number with expiration and CVC code.');
 			} else {
-				window.alert('success! token: ' + result.id);
+				window.alert('Thank you! Your food will be ready shortly.');
 			}
 		};
     }]);

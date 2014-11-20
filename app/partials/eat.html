@@ -3,7 +3,7 @@
         <table class="table table-striped table-bordered" style="width: 30%; float:right;">
         <thead>
             <tr>
-                <th>Info</th>
+                <th>Wait List</th>
             </tr>
         </thead>
         <tr ng-repeat="party in parties | orderByPriority">
@@ -31,6 +31,7 @@
                            placeholder="Quantity"
                            ng-minlength="1"
                            ng-maxlength="2"
+                           style ="width: 100px"
                             />
                   </div>
       <button type="submit" class="btn btn-primary" ng-click="addToCart(food.quantity)">Add To Cart</button></div>
@@ -55,6 +56,7 @@
                            placeholder="Quantity"
                            ng-minlength="1"
                            ng-maxlength="2"
+                           style ="width: 100px"
                             />
               </div>
       <button type="submit" class="btn btn-primary" ng-click="addToCart(food.quantity)">Add To Cart</button></div>
@@ -79,9 +81,10 @@
                            placeholder="Quantity"
                            ng-minlength="1"
                            ng-maxlength="2"
+                           style ="width: 100px"
                             />
                 </div>
-            <button type="submit" class="btn btn-primary" ng-click="addToCart(food.quantity)">Add To Cart</button></div>
+            <button type="submit" class="btn btn-primary" ng-click="addToCart(food)">Add To Cart</button></div>
           </div>
         </div>
       </div>
@@ -104,6 +107,7 @@
 			<input ng-model="cvc" placeholder="CVC" payments-format="cvc"
 			       payments-validate="cvc" name="cvc" />
 			<button style="margin-top: 5px" class="btn btn-primary" type="submit">Submit</button>
+            <div class="row"></div>
 		</form>
 
 		<div ng-if="form.card.$invalid">
