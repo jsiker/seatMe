@@ -15,6 +15,8 @@ angular.module('myApp.controllers', ['angularPayments'])
         });
 
         $scope.restaurant = authService.getCurrentUser();
+        
+        // might want to turn "clearing the party" into a function so you can reuse below
         $scope.newParty = {name: '', phone: '', size: '', done: false, notified: 'No', dateCreated: new Date()};
 
         $scope.saveParty = function () {
@@ -79,10 +81,14 @@ angular.module('myApp.controllers', ['angularPayments'])
         };
 
         $scope.getTotal = function() {
+       	    // I think angular has a nicer foreach function you can use to loop over lists of objects
             var total = 0;
             for(var i = 0; i < $scope.food.length; i++) {
                 var f = $scope.food[i];
                 total += (f.price * f.quantity);
+                
+                // Not sure the use case here, wouldn't you want to do this after you've looped through all of the food
+                // or possibly change it to 0 instead of null?
                 if (total == null) {
                     total = ''
                 }
