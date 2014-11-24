@@ -11,6 +11,7 @@ angular.module('myApp.directives', [])
             restrict: 'A',
             link: function(scope, elem, attrs, ctrl, ngModel) {
                 elem.add(phoneNumber).on('keyup', function() {
+                  // Would be good to have some comments here explaining what's happening
                    var origVal = elem.val().replace(/[^\w\s]/gi, '');
                    if(origVal.length === 10) {
                      var str = origVal.replace(/(.{3})/g,"$1-");
@@ -24,6 +25,7 @@ angular.module('myApp.directives', [])
 ])
     .directive('myApp.stripeForm', ['$log', function($log) {
       return function(scope, elem, attrs) {
+        // Could you have this defined in a partial and just load that instead?
         var form =  document.createElement("form");
         form.action = "charge";
         form.method = "POST";
