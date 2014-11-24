@@ -2,6 +2,7 @@
 
 /* Filters */
 
+// might be good to have a comment in here explaining what this filter is used for
 angular.module('myApp.filters', []).
   filter('interpolate', ['version', function(version) {
     return function(text) {
