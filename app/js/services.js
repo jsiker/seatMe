@@ -1,5 +1,8 @@
 'use strict';
 
+// might want to call this factories since they're all factories, not services
+
+// generally you did a great job keeping all API related code reusable, in factories and not in the controllers
 angular.module('myApp.services', [])
     .value('FIREBASE_URL', 'https://seatme.firebaseio.com')
     .factory('dataService', function($firebase, FIREBASE_URL) {
