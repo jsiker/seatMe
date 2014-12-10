@@ -1,0 +1,9 @@
+{
+  "firebase": "seatme",
+  "public": ".",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}
